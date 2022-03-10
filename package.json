@@ -1,0 +1,21 @@
+{
+  "name": "musicapp_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon src/server"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.6",
+    "next": "^12.0.4",
+    "nodemon": "^2.0.15",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}
