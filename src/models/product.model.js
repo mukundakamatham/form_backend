@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-    album: {type: String, required: true},
-    genre: {type: String, required: true},
-    year: {type: String, required: true},
-    songs:[{type: mongoose.Schema.Types.ObjectId,ref: 'songs'} ],
-    image_urls: [{type: String, required: false}]
+    Name: {type: String, required: true},
+    email: {type: String, required: true},
+
+    Gender: {type: String, required: true},
+    dob: {type: String, required: true},
+    experience: {type: String, required: true},
+    fitness_level: {type: String, required: true},
+    experience_level: {type: String, required: false},
+    Comments: {type:String , required: true},
 })
 
 module.exports = mongoose.model("product", productSchema); // products

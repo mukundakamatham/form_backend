@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
+const crudController = require("./crud.controller");
 const Product = require("../models/product.model")
 
 
@@ -17,29 +18,10 @@ router.get("/",  async function(req, res) {
     const pageCount=Math.ceil(total/size);
     const products = await Product.find().skip(offset).limit(size).lean().exec();
     
-    return res.send({products, user})
+    return res.send(products)
 })
-//The main page should have the pagination functionality with the accurate page numbers 
-//with the ability to filter by genre and sort by year of Album release
-router.get("/album/",  async function(req, res) {
-    let name=req.params.name
-
-    const products = await Product.find({album:name}).lean().exec();
-   
-    return res.send({products})
-})
-router.get("/genre/",  async function(req, res) {
-    let name=req.params.genre
-
-    const products = await Product.find({genre:name}).lean().exec();
-   
-    return res.send({products})
-})
-router.get("/sort/",  async function(req, res) {
-   
-
-    const products = await Product.find().sort({year:1}).lean().exec();
-   
-    return res.send({products})
-})
+router.post("/", crudController.post(Product));
+router.get("/:id", crudController.getOne(Product))
+router.patch("/:id", crudController.updateOne(Product))
+router.delete("/:id", crudController.deleteOne(Product))
 module.exports = router;
